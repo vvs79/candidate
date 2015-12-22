@@ -1,0 +1,144 @@
+    |   var href = $('li.active a').attr("href").slice(-5).split("").reverse().join("");
+    |   var id = parseInt(href);
+    |   href = id.toString();
+    |   href = href.split("").reverse().join("");
+    |   id = parseInt(href);
+    |   $('a:nth-child(id)').addClass("answered"); 
+
+
+    |   $("[href=hrf]").css("color":"red");
+
+
+    |   var hrf = $('li.active a').attr("href");
+    |   $("[href=hrf]").addClass("answered");
+    |   alert(hrf); 
+
+
+    .center.pager
+      = will_paginate @questions
+
+
+    |   $('.previous_page a').html('Previous');
+    |   $('.next_page a').html('Next');
+    |   $("[name='mark']").click(function() {
+    |   $('li.active').css("background","red");
+    |   });
+
+
+      li
+        a href="#tabs-2"
+          | 2
+      li
+        a href="#tabs-3"
+          | 3
+      li
+        a href="#tabs-4"
+          | 4
+
+
+    #tabs-2
+      p
+        | question 2
+    #tabs-3
+      p
+        | question 3
+    #tabs-4
+      p
+        | question 4
+
+
+  h4.d-line
+    | Question:    
+  .well.q-width
+    - @questions.each do |q|
+      = q.content
+  h4.d-line
+    | Answer:
+  .well.q-width
+    - @questions.each do |a|
+      = a.answer
+  h4.d-line
+    | Comment:
+  textarea rows="3"
+  h4.center
+    | Mark:
+  .center.well.q-width
+    = radio_button_tag(:mark, "green")
+    = label_tag(:mark_green, "GREEN")
+    = radio_button_tag(:mark, "yellow")
+    = label_tag(:mark_yellow, "YELLOW")
+    = radio_button_tag(:mark, "red")
+    = label_tag(:mark_red, "RED")
+
+
+
+  .center
+    = button_tag(type: 'button') do
+      = content_tag(:strong, 'Finish')
+
+
+    |   if tab!=num { sel='#tabs-'+num+' textarea'; arr_comments[num]=$(sel).html(); 
+    |   alert(arr_comments[num]); num=tab;}
+    
+
+function go(tab, num){  tab=rapseInt(tab);     
+	      if (tab!=num) { sel='#tabs-'+num+' textarea'; arr_comments[num]=$(sel).html(); alert(arr_comments[num]);  num=tab;} }
+
+
+
+= javascript_include_tag "application"
+
+
+          | Comment: 
+          textarea rows="3" id=hrf
+            = t=" "
+
+
+        p
+          | Comment: 
+          textarea rows="3" id=hrf
+            = txt=" "
+        h4.center
+          | Mark:
+          .well.q-width
+            = radio_button_tag(:mark, "green")
+            = label_tag(:mark_green, "GREEN")
+            = radio_button_tag(:mark, "yellow")
+            = label_tag(:mark_yellow, "YELLOW")
+            = radio_button_tag(:mark, "red")
+            = label_tag(:mark_red, "RED")
+
+
+        .form-group
+          = form_for @id_questions do |f|
+
+            = f.label :comment, 'Comment'
+            = f.text_area :comment, :placeholder => "Write a comment", class: 'form-control', rows: 3
+
+            h4.center
+              | Mark:
+            .well.q-width
+              = radio_button_tag(:mark, "green")
+              = label_tag(:mark_green, "GREEN")
+              = radio_button_tag(:mark, "yellow")
+              = label_tag(:mark_yellow, "YELLOW")
+              = radio_button_tag(:mark, "red")
+              = label_tag(:mark_red, "RED")
+            = f.submit yield(:button_text), class: "btn btn-md btn-success col-md-4 col-md-offset-4"
+
+
+
+  	  	else if $("#tabs-"+num+" h4 di #mark_yellow").attr("checked") color = 'yellow'
+  	  		else if $("#tabs-"+num+" h4 di #mark_red").attr("checked") color = 'red'
+  	  			else color = 'white'
+
+
+
+  $("div div textarea").keypress(function(event){
+      comment = comment+String.fromCharCode(event.keyCode || event.charCode);
+      arr_comments[num-1] = comment;
+      //alert($(this).html());
+   });
+
+
+

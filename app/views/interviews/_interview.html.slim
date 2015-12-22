@@ -1,0 +1,26 @@
+- @interviews.each do |interview|
+  tr.info
+    td
+      = link_to interview_path(interview)
+        = interview.id
+    td
+      = link_to interview_path(interview)
+        = interview.target_level   
+    td
+      = link_to admin_template_path(interview.template_id)
+        = interview.template.name
+    td
+      = link_to interview_path(interview)
+        = interview.user_id
+    td
+      = link_to interview_path(interview)
+        = interview.firstname
+    td
+      = link_to interview_path(interview)
+        = interview.lastname
+    td
+      = link_to interview_path(interview)
+        = interview.updated_at.to_s[0..15]
+    td
+      = link_to interview_path(interview), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" do
+        i.glyphicon.glyphicon-remove Delete

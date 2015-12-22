@@ -1,0 +1,25 @@
+.form-group
+  = form_for [:admin, @topic], html: { multipart: true } do |f|
+    - if @topic.errors.any?
+      .alert.alert-danger
+        h2
+          = pluralize(@topic.errors.count, 'error')
+        ul
+          - @topic.errors.full_messages.each do |message|
+            li
+              = message
+    .field
+      = f.label :image
+      br
+      .fileUpload.btn.btn-primary
+        span Upload
+        = f.file_field :image, class: "fileUpload upload"
+      br
+      = f.label :title
+      br
+      = f.text_field :title, class: "form-control"
+      p#notice
+        = notice
+    .actions.row
+      = f.submit 'Confirm', class: "btn btn-md btn-success col-md-4 col-md-offset-4"
+     

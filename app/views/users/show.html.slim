@@ -1,0 +1,9 @@
+.container.content-area
+  - if current_user.admin?
+    p
+      | You are admin
+    br/
+    = link_to 'Manage things', admin_users_path
+  - else
+    p
+      | You are interviewer

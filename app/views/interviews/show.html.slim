@@ -1,0 +1,14 @@
+- provide(:title, 'Interview')
+.container.content-area
+  h1.center
+    = @interview.template.name
+  h4.center
+    | Question:    
+  .well.q-width
+    = @interview.template.questions.each do |q|
+      = q.content
+  h4.center
+    | Answer:
+  .well.q-width
+    = @interview.template.questions.each do |a|
+      = a.answer
